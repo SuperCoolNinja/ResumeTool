@@ -1,7 +1,7 @@
 import './style.css'
 
-import { DropDownMore } from "../dropdown/more"
-import { DropDownLess } from "../dropdown/less"
+import { DropDownMore } from "../dropdown-icons/more"
+import { DropDownLess } from "../dropdown-icons/less"
 import { useState } from "react"
 import { Inputs } from './inputs'
 
