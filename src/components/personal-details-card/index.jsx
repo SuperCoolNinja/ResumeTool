@@ -1,27 +1,36 @@
-import { DropDownMore } from "../dropdown-icons/more";
-import { DropDownLess } from "../dropdown-icons/less";
-import { useState } from "react";
-import { Inputs } from "./inputs";
+import { useContext } from "react";
+import { DataContext } from "../../contexts/dataContext";
+import { Input } from "../input";
 
-export const PersonalDetailsCard = () => {
-  const [viewMore, setViewMore] = useState(true);
-
-  const updateViewMore = (bool) => {
-    setViewMore(bool);
-  };
+export const PersonalDetailsInputs = () => {
+  const { data } = useContext(DataContext);
 
   return (
-    <div className="container_card">
-      <div className="wrapper_card">
-        <h3 className="title_card">Personal Details</h3>
-        {!viewMore ? (
-          <DropDownMore updateViewMore={updateViewMore} />
-        ) : (
-          <DropDownLess updateViewMore={updateViewMore} />
-        )}
-      </div>
-
-      {viewMore && <Inputs />}
-    </div>
+    <>
+      <Input
+        labelName="Full Name"
+        id="fullname"
+        type="text"
+        value={data.personnalDetails.fullname}
+      />
+      <Input
+        labelName="Email"
+        id="email"
+        type="email"
+        value={data.personnalDetails.email}
+      />
+      <Input
+        labelName="Address"
+        id="address"
+        type="text"
+        value={data.personnalDetails.address}
+      />
+      <Input
+        labelName="Phone"
+        id="phone"
+        type="tel"
+        value={data.personnalDetails.phone}
+      />
+    </>
   );
 };

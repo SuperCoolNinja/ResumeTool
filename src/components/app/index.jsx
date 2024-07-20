@@ -1,7 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { Card } from "../card";
+import { PersonalDetailsInputs } from "../personal-details-card";
+import { EducationInputs } from "../education-card";
+import ExperienceInputs from "../experience-card";
 import { DataContext } from "../../contexts/dataContext";
-import { PersonalDetailsCard } from "../personal-details-card";
-import "./style.css";
 
 export const App = () => {
   const [data, setData] = useState({
@@ -37,10 +39,35 @@ export const App = () => {
     setData,
   };
 
+  const [viewMoreStates, setViewMoreStates] = useState([true, false, false]);
+
+  const handleViewMoreChange = (index, bool) => {
+    setViewMoreStates((prev) =>
+      prev.map((viewMore, idx) => (idx === index ? bool : viewMore))
+    );
+  };
+
   return (
     <DataContext.Provider value={dataObj}>
-      <div className="container">
-        <PersonalDetailsCard />
+      <div className="container cards-space">
+        <Card
+          title="Personal Details"
+          renderInputs={PersonalDetailsInputs}
+          viewMore={viewMoreStates[0]}
+          setViewMore={(bool) => handleViewMoreChange(0, bool)}
+        />
+        <Card
+          title="Education"
+          renderInputs={EducationInputs}
+          viewMore={viewMoreStates[1]}
+          setViewMore={(bool) => handleViewMoreChange(1, bool)}
+        />
+        <Card
+          title="Experience"
+          renderInputs={ExperienceInputs}
+          viewMore={viewMoreStates[2]}
+          setViewMore={(bool) => handleViewMoreChange(2, bool)}
+        />
       </div>
     </DataContext.Provider>
   );
