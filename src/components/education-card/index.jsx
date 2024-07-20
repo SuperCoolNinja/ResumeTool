@@ -3,7 +3,23 @@ import { Input } from "../input";
 import { DataContext } from "../../contexts/dataContext";
 
 export const EducationInputs = () => {
-  const { data } = useContext(DataContext);
+  const { data, setData } = useContext(DataContext);
+
+  const addEducation = () => {
+    setData((prevData) => ({
+      ...prevData,
+      educations: [
+        ...prevData.educations,
+        {
+          school: "",
+          degree: "",
+          startDate: "",
+          endDate: "",
+          location: "",
+        },
+      ],
+    }));
+  };
 
   return (
     <>
