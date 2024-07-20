@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { DataContext } from '../../contexts/dataContext';
-import { PersonalDetailsCard } from '../personal-details';
-import './style.css';
+import { useState } from "react";
+import { DataContext } from "../../contexts/dataContext";
+import { PersonalDetailsCard } from "../personal-details-card";
+import "./style.css";
 
 export const App = () => {
   const [data, setData] = useState({
     personnalDetails: {
-      fullname: "",
-      email: "",
-      address: "",
-      phone: "",
+      fullname: "John Doe",
+      email: "johndoe@gmail.com",
+      address: "30461 Lue Cliffs Suite 385",
+      phone: "1-603-507-1027",
     },
     educations: [
       {
@@ -39,7 +39,9 @@ export const App = () => {
 
   return (
     <DataContext.Provider value={dataObj}>
-      <PersonalDetailsCard />
+      <div className="container">
+        <PersonalDetailsCard />
+      </div>
     </DataContext.Provider>
   );
 };
