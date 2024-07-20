@@ -1,7 +1,12 @@
-export const Input = ({id, type, labelName}) =>
-{
+import "./style.css"
+
+export const Input = ({ id, type, labelName }) => {
     return <form action="">
-        <label htmlFor={id}>{labelName}</label>
-        <input type={type} id={id}/>
+        <div>
+            <label htmlFor={id}>{labelName}</label>
+        </div>
+        <div>
+            <input className="input" type={type} id={id} />
+        </div>
     </form>
 }

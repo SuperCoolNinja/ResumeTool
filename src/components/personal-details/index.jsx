@@ -1,35 +1,25 @@
-import { Input } from "../input"
+import './style.css'
 
-import { FormPersonalDetails as data } from "./config"
+import { DropDownMore } from "../dropdown/more"
+import { DropDownLess } from "../dropdown/less"
+import { useState } from "react"
+import { Inputs } from './inputs'
 
+export const PersonalDetailsCard = () => {
+    const [viewMore, setViewMore] = useState(true)
 
-export const PersonalDetails = () => {
+    const updateViewMore = (bool) => {
+        setViewMore(bool);
+    }
+
     return (
-        <div>
-            <h3>Personal Details</h3>
-            <Input
-                labelName={data.fullname.label}
-                id={data.fullname.id}
-                type={data.fullname.type}
-            />
+        <div className="container_card">
+            <div className="wrapper_card">
+                <h3 className="title_card">Personal Details</h3>
+                {!viewMore ? <DropDownMore updateViewMore={updateViewMore} /> : <DropDownLess updateViewMore={updateViewMore} />}
+            </div>
 
-            <Input
-                labelName={data.email.label}
-                id={data.email.id}
-                type={data.email.type}
-            />
-
-            <Input
-                labelName={data.address.label}
-                id={data.address.id}
-                type={data.address.type}
-            />
-
-            <Input
-                labelName={data.phone.label}
-                id={data.phone.id}
-                type={data.phone.type}
-            />
+            {viewMore && <Inputs />}
         </div>
     )
 }
