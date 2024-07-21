@@ -24,12 +24,6 @@ export const PersonalDetailsCard = () => {
 
     if (getData) {
       try {
-        const dataParsed = JSON.parse(getData);
-        setData((prevData) => ({
-          ...prevData,
-          dataParsed,
-        }));
-
         localStorage.setItem(
           "data",
           JSON.stringify({
