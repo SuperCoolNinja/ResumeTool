@@ -38,12 +38,51 @@ body {
 }
 
 /* ------------ */
+/* --Global--*/
+/* ------------ */
+.wrapper-btn {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 2rem;
+}
+
+.btn-save,
+.btn-clear {
+  padding: 1rem;
+  border-radius: 2rem;
+  width: 10rem;
+  border: none;
+  transition: scale 0.1s ease-in-out;
+  color: #fff;
+  font-weight: 600;
+}
+
+.btn-save:hover,
+.btn-clear:hover {
+  cursor: pointer;
+  scale: 1.03;
+}
+
+.btn-save {
+  background-color: #242323e8;
+}
+
+.btn-clear {
+  background: none;
+  border: solid 0.2rem rgba(139, 134, 134, 0.438);
+  color: black;
+  font-weight: 400;
+}
+
+/* ------------ */
 /* --CARDS--*/
 /* ------------ */
 .cards-space {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  margin-bottom: 5rem;
 }
 
 .container_card {
@@ -85,6 +124,6 @@ body {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1170px;
+    width: 1400px;
   }
 }

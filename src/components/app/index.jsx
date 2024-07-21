@@ -1,8 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Card } from "../card";
-import { PersonalDetailsInputs } from "../personal-details-card";
-import { EducationInputs } from "../education-card";
-import ExperienceInputs from "../experience-card";
+import { PersonalDetailsCard } from "../personal-details-card";
 import { DataContext } from "../../contexts/dataContext";
 
 export const App = () => {
@@ -14,13 +12,7 @@ export const App = () => {
       phone: "1-603-507-1027",
     },
     educations: [
-      {
-        school: "",
-        degree: "",
-        startDate: "",
-        endDate: "",
-        location: "",
-      },
+      { school: "", degree: "", startDate: "", endDate: "", location: "" },
     ],
     experiences: [
       {
@@ -34,40 +26,22 @@ export const App = () => {
     ],
   });
 
-  const dataObj = {
-    data,
-    setData,
-  };
-
-  const [viewMoreStates, setViewMoreStates] = useState([true, false, false]);
-
-  const handleViewMoreChange = (index, bool) => {
-    setViewMoreStates((prev) =>
-      prev.map((viewMore, idx) => (idx === index ? bool : viewMore))
-    );
-  };
+  useEffect(() => {
+    const getData = localStorage.getItem("data");
+    if (getData) {
+      try {
+        const dataParsed = JSON.parse(getData);
+        setData(dataParsed);
+      } catch (error) {
+        console.error("Failed to parse data from localStorage:", error);
+      }
+    }
+  }, []);
 
   return (
-    <DataContext.Provider value={dataObj}>
+    <DataContext.Provider value={{ data, setData }}>
       <div className="container cards-space">
-        <Card
-          title="Personal Details"
-          renderInputs={PersonalDetailsInputs}
-          viewMore={viewMoreStates[0]}
-          setViewMore={(bool) => handleViewMoreChange(0, bool)}
-        />
-        <Card
-          title="Education"
-          renderInputs={EducationInputs}
-          viewMore={viewMoreStates[1]}
-          setViewMore={(bool) => handleViewMoreChange(1, bool)}
-        />
-        <Card
-          title="Experience"
-          renderInputs={ExperienceInputs}
-          viewMore={viewMoreStates[2]}
-          setViewMore={(bool) => handleViewMoreChange(2, bool)}
-        />
+        <Card title="Personal Details" renderComponent={PersonalDetailsCard} />
       </div>
     </DataContext.Provider>
   );

@@ -1,22 +1,23 @@
-import { DropDownLess } from "../dropdown-icons/less";
 import { DropDownMore } from "../dropdown-icons/more";
+import { DropDownLess } from "../dropdown-icons/less";
+import { useState } from "react";
 
-export const Card = ({ title, renderInputs, viewMore, setViewMore }) => {
-  const updateViewMore = (bool) => {
-    setViewMore(bool);
+export const Card = ({ title, renderComponent }) => {
+  const [isViewMore, setViewMore] = useState(true);
+
+  const handleToggle = () => {
+    setViewMore(!isViewMore);
   };
 
   return (
     <div className="container_card">
       <div className="wrapper_card">
         <h3 className="title_card">{title}</h3>
-        {!viewMore ? (
-          <DropDownMore updateViewMore={updateViewMore} />
-        ) : (
-          <DropDownLess updateViewMore={updateViewMore} />
-        )}
+        <div onClick={handleToggle}>
+          {isViewMore ? <DropDownLess /> : <DropDownMore />}
+        </div>
       </div>
-      {viewMore && renderInputs()}
+      {isViewMore && renderComponent()}
     </div>
   );
 };

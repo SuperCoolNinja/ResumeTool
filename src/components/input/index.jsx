@@ -1,22 +1,6 @@
-import { useContext } from "react";
-import { DataContext } from "../../contexts/dataContext";
 import "./style.css";
 
-export const Input = ({ id, type, labelName }) => {
-  const { data, setData } = useContext(DataContext);
-
-  const handleChange = (event) => {
-    const { value } = event.target;
-
-    setData((prevData) => ({
-      ...prevData,
-      personnalDetails: {
-        ...prevData.personnalDetails,
-        [id]: value,
-      },
-    }));
-  };
-
+export const Input = ({ id, type, labelName, value, onChange }) => {
   return (
     <form action="">
       <div>
@@ -24,11 +8,11 @@ export const Input = ({ id, type, labelName }) => {
       </div>
       <div>
         <input
-          onChange={handleChange}
+          onChange={onChange}
           className="input"
           type={type}
           id={id}
-          value={data.personnalDetails[id]}
+          value={value || ""}
         />
       </div>
     </form>
