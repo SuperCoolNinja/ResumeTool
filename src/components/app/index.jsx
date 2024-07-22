@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Card } from "../card";
 import { PersonalDetailsCard } from "../personal-details-card";
 import { DataContext } from "../../contexts/dataContext";
+import { Educations } from "../educations";
 
 export const App = () => {
   const [data, setData] = useState({
@@ -42,6 +43,7 @@ export const App = () => {
     <DataContext.Provider value={{ data, setData }}>
       <div className="container cards-space">
         <Card title="Personal Details" renderComponent={PersonalDetailsCard} />
+        <Card title="Educations" renderComponent={Educations} />
       </div>
     </DataContext.Provider>
   );
