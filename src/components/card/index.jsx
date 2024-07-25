@@ -2,7 +2,7 @@ import { DropDownMore } from "../dropdown-icons/more";
 import { DropDownLess } from "../dropdown-icons/less";
 import { useState } from "react";
 
-export const Card = ({ title, renderComponent }) => {
+export const Card = ({ title, children }) => {
   const [isViewMore, setViewMore] = useState(true);
 
   const handleToggle = () => {
@@ -17,7 +17,7 @@ export const Card = ({ title, renderComponent }) => {
           {isViewMore ? <DropDownLess /> : <DropDownMore />}
         </div>
       </div>
-      {isViewMore && renderComponent()}
+      {isViewMore && children}
     </div>
   );
 };

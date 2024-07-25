@@ -8,9 +8,7 @@ export const DataContext = createContext({
       address: "30461 Lue Cliffs Suite 385",
       phone: "1-603-507-1027",
     },
-    educations: [
-      { school: "", degree: "", startDate: "", endDate: "", location: "" },
-    ],
+    educations: [],
     experiences: [
       {
         companyName: "",

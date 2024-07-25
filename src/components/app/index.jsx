@@ -12,9 +12,7 @@ export const App = () => {
       address: "30461 Lue Cliffs Suite 385",
       phone: "1-603-507-1027",
     },
-    educations: [
-      { school: "", degree: "", startDate: "", endDate: "", location: "" },
-    ],
+    educations: [],
     experiences: [
       {
         companyName: "",
@@ -42,8 +40,12 @@ export const App = () => {
   return (
     <DataContext.Provider value={{ data, setData }}>
       <div className="container cards-space">
-        <Card title="Personal Details" renderComponent={PersonalDetailsCard} />
-        <Card title="Educations" renderComponent={Educations} />
+        <Card title="Personal Details">
+          <PersonalDetailsCard />
+        </Card>
+        <Card title="Educations">
+          <Educations />
+        </Card>
       </div>
     </DataContext.Provider>
   );
