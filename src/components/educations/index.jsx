@@ -1,10 +1,15 @@
 import { useContext, useState } from "react";
-import { Input } from "../input";
 import { DataContext } from "../../contexts/dataContext";
 import { v4 as uuidv4 } from "uuid";
+import { InputsRegisterEducation } from "./inputs-register-education";
+import { LoadEducations } from "./load-educations";
 
 export const Educations = () => {
   const { data, setData } = useContext(DataContext);
+  const [shouldAddNewEducation, setShouldAddNewEducation] = useState(false);
+
+  const canOpenTheInputsRegisterEducation =
+    data.educations.length <= 0 || shouldAddNewEducation == true;
 
   const [tempData, setTempData] = useState({
     school: "",
@@ -23,6 +28,8 @@ export const Educations = () => {
     }));
   };
 
+  const handleAddNewEducation = (bool) => setShouldAddNewEducation(bool);
+
   const handleSaveData = (e) => {
     e.preventDefault();
 
@@ -38,6 +45,8 @@ export const Educations = () => {
       endDate: "",
       location: "",
     });
+
+    setShouldAddNewEducation(false);
   };
 
   const handleEditChange = (e, index, field) => {
@@ -52,119 +61,22 @@ export const Educations = () => {
 
   return (
     <>
-      {data.educations.length <= 0 ? (
+      {canOpenTheInputsRegisterEducation ? (
         <InputsRegisterEducation
           tempData={tempData}
           handleChange={handleChange}
           handleSaveData={handleSaveData}
+          uuid={uuidv4}
+          shouldAddNewEducation={shouldAddNewEducation}
+          setShouldAddNewEducation={handleAddNewEducation}
         />
       ) : (
-        <LoadInputsEducation
+        <LoadEducations
           educations={data.educations}
           handleEditChange={handleEditChange}
+          setAddNewEducation={handleAddNewEducation}
         />
       )}
-    </>
-  );
-};
-
-const LoadInputsEducation = ({ educations, handleEditChange }) => {
-  return (
-    <>
-      {educations.map((education, index) => (
-        <div key={index}>
-          <Input
-            labelName="School"
-            id={`school-${education.id}`}
-            type="text"
-            value={education.school}
-            onChange={(e) => handleEditChange(e, index, "school")}
-          />
-          <Input
-            labelName="Degree"
-            id={`degree-${education.id}`}
-            type="text"
-            value={education.degree}
-            onChange={(e) => handleEditChange(e, index, "degree")}
-          />
-          <Input
-            labelName="Start Date"
-            id={`startDate-${education.id}`}
-            type="date"
-            value={education.startDate}
-            onChange={(e) => handleEditChange(e, index, "startDate")}
-          />
-          <Input
-            labelName="End Date"
-            id={`endDate-${education.id}`}
-            type="date"
-            value={education.endDate}
-            onChange={(e) => handleEditChange(e, index, "endDate")}
-          />
-          <Input
-            labelName="Location"
-            id={`location-${education.id}`}
-            type="text"
-            value={education.location}
-            onChange={(e) => handleEditChange(e, index, "location")}
-          />
-        </div>
-      ))}
-    </>
-  );
-};
-
-const InputsRegisterEducation = ({
-  tempData,
-  handleChange,
-  handleSaveData,
-}) => {
-  return (
-    <>
-      <Input
-        labelName="School"
-        id={`school-${uuidv4()}`}
-        type="text"
-        value={tempData.school}
-        onChange={(e) => handleChange(e, "school")}
-      />
-      <Input
-        labelName="Degree"
-        id={`degree-${uuidv4()}`}
-        type="text"
-        value={tempData.degree}
-        onChange={(e) => handleChange(e, "degree")}
-      />
-      <Input
-        labelName="Start Date"
-        id={`startDate-${uuidv4()}`}
-        type="date"
-        value={tempData.startDate}
-        onChange={(e) => handleChange(e, "startDate")}
-      />
-      <Input
-        labelName="End Date"
-        id={`endDate-${uuidv4()}`}
-        type="date"
-        value={tempData.endDate}
-        onChange={(e) => handleChange(e, "endDate")}
-      />
-      <Input
-        labelName="Location"
-        id={`location-${uuidv4()}`}
-        type="text"
-        value={tempData.location}
-        onChange={(e) => handleChange(e, "location")}
-      />
-
-      <div className="wrapper-btn">
-        <button className="btn-clear" onClick={handleSaveData}>
-          Clear
-        </button>
-        <button className="btn-save" onClick={handleSaveData}>
-          Save
-        </button>
-      </div>
     </>
   );
 };

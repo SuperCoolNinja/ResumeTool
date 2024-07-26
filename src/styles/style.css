@@ -11,6 +11,10 @@
   box-sizing: border-box;
 }
 
+li {
+  list-style: none;
+}
+
 /* ------------ */
 /* --DEFAULT--*/
 /* ------------ */
@@ -40,6 +44,15 @@ body {
 /* ------------ */
 /* --Global--*/
 /* ------------ */
+.gap-1rem {
+  display: flex;
+  gap: 1rem;
+}
+
+/* ------------ */
+/* --BUTTON--*/
+/* ------------ */
+
 .wrapper-btn {
   display: flex;
   justify-content: left;
@@ -48,7 +61,8 @@ body {
 }
 
 .btn-save,
-.btn-clear {
+.btn-clear,
+.btn-delete {
   padding: 1rem;
   border-radius: 2rem;
   width: 10rem;
@@ -59,7 +73,8 @@ body {
 }
 
 .btn-save:hover,
-.btn-clear:hover {
+.btn-clear:hover,
+.btn-delete:hover {
   cursor: pointer;
   scale: 1.03;
 }
@@ -75,13 +90,55 @@ body {
   font-weight: 400;
 }
 
+.btn-delete {
+  border: solid 0.2rem rgba(139, 134, 134, 0.438);
+  color: white;
+  font-weight: bold;
+  background: rgba(235, 32, 32, 0.925);
+}
+
+/* ------------ */
+/* --OPTIONS --*/
+/* ------------ */
+.wrapper-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.option-edit,
+.option-delete {
+  padding: 1rem;
+  border-radius: 2rem;
+  width: 7rem;
+  border: none;
+  transition: scale 0.1s ease-in-out;
+  color: #fff;
+  font-weight: bold;
+}
+
+.option-edit:hover,
+.option-delete:hover {
+  cursor: pointer;
+  scale: 1.03;
+}
+
+.option-edit {
+  background-color: #a8a8a8e8;
+}
+
+.option-delete {
+  color: white;
+  background: rgba(235, 32, 32, 0.925);
+}
+
 /* ------------ */
 /* --CARDS--*/
 /* ------------ */
 .cards-space {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 4rem;
   margin-bottom: 5rem;
 }
 
@@ -106,6 +163,27 @@ body {
 
 .title_card {
   font-size: 2.5rem;
+}
+
+/* ------------ */
+/* --LOADED EDUCATION CARD--*/
+/* ------------ */
+
+.container-educations-loaded {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.title-education-loaded {
+  text-transform: "capitalize";
+  width: 15rem;
+  white-space: nowrap;
+}
+
+h3[class="title-education-loaded"] {
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 /* ------------ */

@@ -50,14 +50,15 @@ export const PersonalDetailsCard = () => {
   };
 
   const handleClear = () => {
-    setData({
+    setData((prevData) => ({
+      ...prevData,
       personnalDetails: {
         fullname: "",
         email: "",
         address: "",
         phone: "",
       },
-    });
+    }));
   };
 
   return (
