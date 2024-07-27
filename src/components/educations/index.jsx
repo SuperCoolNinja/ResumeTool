@@ -19,6 +19,8 @@ export const Educations = () => {
     location: "",
   });
 
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e, field) => {
     const { value } = e.target;
 
@@ -26,12 +28,40 @@ export const Educations = () => {
       ...prevData,
       [field]: value,
     }));
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [field]: "",
+    }));
   };
 
   const handleAddNewEducation = (bool) => setShouldAddNewEducation(bool);
 
   const handleSaveData = (e) => {
     e.preventDefault();
+
+    const newErrors = {};
+
+    if (tempData.school.trim() === "") {
+      newErrors.school = "School cannot be empty";
+    }
+    if (tempData.degree.trim() === "") {
+      newErrors.degree = "Degree cannot be empty";
+    }
+    if (tempData.startDate.trim() === "") {
+      newErrors.startDate = "Start date cannot be empty";
+    }
+    if (tempData.endDate.trim() === "") {
+      newErrors.endDate = "End date cannot be empty";
+    }
+    if (tempData.location.trim() === "") {
+      newErrors.location = "Location cannot be empty";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
 
     setData((prevData) => ({
       ...prevData,
@@ -69,6 +99,7 @@ export const Educations = () => {
           uuid={uuidv4}
           shouldAddNewEducation={shouldAddNewEducation}
           setShouldAddNewEducation={handleAddNewEducation}
+          errors={errors}
         />
       ) : (
         <LoadEducations

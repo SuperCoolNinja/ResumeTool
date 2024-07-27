@@ -19,33 +19,10 @@ export const PersonalDetailsCard = () => {
   const handleSave = (e) => {
     e.preventDefault();
 
-    const { id, value } = e.target;
-    const getData = localStorage.getItem("data");
-
-    if (getData) {
-      try {
-        localStorage.setItem(
-          "data",
-          JSON.stringify({
-            personnalDetails: {
-              ...data.personnalDetails,
-              [id]: value,
-            },
-          })
-        );
-      } catch (error) {
-        console.error("Failed to parse data from localStorage:", error);
-      }
-    } else {
-      localStorage.setItem(
-        "data",
-        JSON.stringify({
-          personnalDetails: {
-            ...data.personnalDetails,
-            [id]: value,
-          },
-        })
-      );
+    try {
+      localStorage.setItem("data", JSON.stringify(data));
+    } catch (error) {
+      console.error("Failed to save data to localStorage:", error);
     }
   };
 
@@ -69,6 +46,7 @@ export const PersonalDetailsCard = () => {
         type="text"
         value={data.personnalDetails.fullname}
         onChange={handleChange}
+        error={() => {}}
       />
       <Input
         labelName="Email"
@@ -76,6 +54,7 @@ export const PersonalDetailsCard = () => {
         type="email"
         value={data.personnalDetails.email}
         onChange={handleChange}
+        error={() => {}}
       />
       <Input
         labelName="Address"
@@ -83,6 +62,7 @@ export const PersonalDetailsCard = () => {
         type="text"
         value={data.personnalDetails.address}
         onChange={handleChange}
+        error={() => {}}
       />
       <Input
         labelName="Phone"
@@ -90,6 +70,7 @@ export const PersonalDetailsCard = () => {
         type="tel"
         value={data.personnalDetails.phone}
         onChange={handleChange}
+        error={() => {}}
       />
 
       <div className="wrapper-btn">

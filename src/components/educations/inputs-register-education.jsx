@@ -7,11 +7,8 @@ export const InputsRegisterEducation = ({
   uuid,
   shouldAddNewEducation,
   setShouldAddNewEducation,
+  errors,
 }) => {
-  const handleCancel = () => {
-    setShouldAddNewEducation(false);
-  };
-
   return (
     <>
       <Input
@@ -20,6 +17,7 @@ export const InputsRegisterEducation = ({
         type="text"
         value={tempData.school}
         onChange={(e) => handleChange(e, "school")}
+        error={errors.school}
       />
       <Input
         labelName="Degree"
@@ -27,6 +25,7 @@ export const InputsRegisterEducation = ({
         type="text"
         value={tempData.degree}
         onChange={(e) => handleChange(e, "degree")}
+        error={errors.degree}
       />
       <Input
         labelName="Start Date"
@@ -34,6 +33,7 @@ export const InputsRegisterEducation = ({
         type="date"
         value={tempData.startDate}
         onChange={(e) => handleChange(e, "startDate")}
+        error={errors.startDate}
       />
       <Input
         labelName="End Date"
@@ -41,6 +41,7 @@ export const InputsRegisterEducation = ({
         type="date"
         value={tempData.endDate}
         onChange={(e) => handleChange(e, "endDate")}
+        error={errors.endDate}
       />
       <Input
         labelName="Location"
@@ -48,6 +49,7 @@ export const InputsRegisterEducation = ({
         type="text"
         value={tempData.location}
         onChange={(e) => handleChange(e, "location")}
+        error={errors.location}
       />
 
       <div className="wrapper-btn">
@@ -56,7 +58,10 @@ export const InputsRegisterEducation = ({
         </button>
 
         {shouldAddNewEducation && (
-          <button className="btn-delete" onClick={handleCancel}>
+          <button
+            className="btn-delete"
+            onClick={() => setShouldAddNewEducation(false)}
+          >
             Cancel
           </button>
         )}

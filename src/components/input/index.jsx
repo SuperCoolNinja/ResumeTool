@@ -1,6 +1,6 @@
 import "./style.css";
 
-export const Input = ({ id, type, labelName, value, onChange }) => {
+export const Input = ({ id, type, labelName, value, onChange, error }) => {
   return (
     <form action="">
       <div>
@@ -14,6 +14,8 @@ export const Input = ({ id, type, labelName, value, onChange }) => {
           id={id}
           value={value || ""}
         />
+
+        {error?.length > 0 && <span className="error-message">{error}</span>}
       </div>
     </form>
   );

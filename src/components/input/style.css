@@ -7,3 +7,9 @@
   margin: 1rem 0;
   font-weight: 500;
 }
+
+.error-message {
+  color: rgba(255, 0, 0, 0.945);
+  font-weight: 400;
+  font-size: 1.4rem;
+}

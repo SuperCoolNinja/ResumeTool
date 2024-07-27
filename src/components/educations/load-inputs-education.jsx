@@ -11,6 +11,7 @@ export const LoadInputsEducation = ({ educations, handleEditChange }) => {
             type="text"
             value={education.school}
             onChange={(e) => handleEditChange(e, index, "school")}
+            error={() => {}}
           />
           <Input
             labelName="Degree"
@@ -18,6 +19,7 @@ export const LoadInputsEducation = ({ educations, handleEditChange }) => {
             type="text"
             value={education.degree}
             onChange={(e) => handleEditChange(e, index, "degree")}
+            error={() => {}}
           />
           <Input
             labelName="Start Date"
@@ -25,6 +27,7 @@ export const LoadInputsEducation = ({ educations, handleEditChange }) => {
             type="date"
             value={education.startDate}
             onChange={(e) => handleEditChange(e, index, "startDate")}
+            error={() => {}}
           />
           <Input
             labelName="End Date"
@@ -32,6 +35,7 @@ export const LoadInputsEducation = ({ educations, handleEditChange }) => {
             type="date"
             value={education.endDate}
             onChange={(e) => handleEditChange(e, index, "endDate")}
+            error={() => {}}
           />
           <Input
             labelName="Location"
@@ -39,6 +43,7 @@ export const LoadInputsEducation = ({ educations, handleEditChange }) => {
             type="text"
             value={education.location}
             onChange={(e) => handleEditChange(e, index, "location")}
+            error={() => {}}
           />
         </div>
       ))}
