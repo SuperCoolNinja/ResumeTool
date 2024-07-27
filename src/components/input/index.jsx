@@ -2,7 +2,11 @@ import "./style.css";
 
 export const Input = ({ id, type, labelName, value, onChange, error }) => {
   return (
-    <form action="">
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+      }}
+    >
       <div>
         <label htmlFor={id}>{labelName}</label>
       </div>
