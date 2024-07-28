@@ -89,6 +89,15 @@ export const Educations = () => {
     });
   };
 
+  const handleDelete = (e, index) => {
+    const filterDataToKeep = data.educations.filter((_, i) => i !== index);
+
+    setData((prevData) => ({
+      ...prevData,
+      educations: filterDataToKeep,
+    }));
+  };
+
   return (
     <>
       {canOpenTheInputsRegisterEducation ? (
@@ -105,6 +114,7 @@ export const Educations = () => {
         <LoadEducations
           educations={data.educations}
           handleEditChange={handleEditChange}
+          handleDelete={handleDelete}
           setAddNewEducation={handleAddNewEducation}
         />
       )}

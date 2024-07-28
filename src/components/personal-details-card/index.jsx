@@ -1,41 +1,35 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { DataContext } from "../../contexts/dataContext";
 import { Input } from "../input";
 
 export const PersonalDetailsCard = () => {
   const { data, setData } = useContext(DataContext);
+  const [formState, setFormState] = useState(data.personalDetails);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      personnalDetails: {
-        ...prevData.personnalDetails,
-        [id]: value,
-      },
+    setFormState((prevFormState) => ({
+      ...prevFormState,
+      [id]: value,
     }));
+  };
+
+  const handleClear = () => {
+    setFormState({
+      fullname: "",
+      email: "",
+      address: "",
+      phone: "",
+    });
   };
 
   const handleSave = (e) => {
     e.preventDefault();
-
-    try {
-      localStorage.setItem("data", JSON.stringify(data));
-    } catch (error) {
-      console.error("Failed to save data to localStorage:", error);
-    }
-  };
-
-  const handleClear = () => {
     setData((prevData) => ({
       ...prevData,
-      personnalDetails: {
-        fullname: "",
-        email: "",
-        address: "",
-        phone: "",
-      },
+      personalDetails: formState,
     }));
+    console.log("Data saved successfully!");
   };
 
   return (
@@ -44,7 +38,7 @@ export const PersonalDetailsCard = () => {
         labelName="Full Name"
         id="fullname"
         type="text"
-        value={data.personnalDetails.fullname}
+        value={formState.fullname}
         onChange={handleChange}
         error={() => {}}
       />
@@ -52,7 +46,7 @@ export const PersonalDetailsCard = () => {
         labelName="Email"
         id="email"
         type="email"
-        value={data.personnalDetails.email}
+        value={formState.email}
         onChange={handleChange}
         error={() => {}}
       />
@@ -60,7 +54,7 @@ export const PersonalDetailsCard = () => {
         labelName="Address"
         id="address"
         type="text"
-        value={data.personnalDetails.address}
+        value={formState.address}
         onChange={handleChange}
         error={() => {}}
       />
@@ -68,7 +62,7 @@ export const PersonalDetailsCard = () => {
         labelName="Phone"
         id="phone"
         type="tel"
-        value={data.personnalDetails.phone}
+        value={formState.phone}
         onChange={handleChange}
         error={() => {}}
       />

@@ -1,8 +1,11 @@
-import { createContext } from "react";
+import { createContext, useContext } from "react";
+import { useLocalStorage } from "../hooks/useLocalStorage";
 
-export const DataContext = createContext({
-  data: {
-    personnalDetails: {
+export const DataContext = createContext();
+
+export const DataProvider = ({ children }) => {
+  const [data, setData] = useLocalStorage("data", {
+    personalDetails: {
       fullname: "John Doe",
       email: "johndoe@gmail.com",
       address: "30461 Lue Cliffs Suite 385",
@@ -19,6 +22,13 @@ export const DataContext = createContext({
         description: "",
       },
     ],
-  },
-  setData: () => {},
-});
+  });
+
+  return (
+    <DataContext.Provider value={{ data, setData }}>
+      {children}
+    </DataContext.Provider>
+  );
+};
+
+export const useData = () => useContext(DataContext);
