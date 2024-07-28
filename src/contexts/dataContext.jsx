@@ -12,16 +12,7 @@ export const DataProvider = ({ children }) => {
       phone: "1-603-507-1027",
     },
     educations: [],
-    experiences: [
-      {
-        companyName: "",
-        positionTitle: "",
-        startDate: "",
-        endDate: "",
-        location: "",
-        description: "",
-      },
-    ],
+    experiences: [],
   });
 
   return (
