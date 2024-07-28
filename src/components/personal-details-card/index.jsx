@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { DataContext } from "../../contexts/dataContext";
 import { Input } from "../input";
+import { Button } from "../shared/button";
 
 export const PersonalDetailsCard = () => {
   const { data, setData } = useContext(DataContext);
@@ -68,13 +69,8 @@ export const PersonalDetailsCard = () => {
       />
 
       <div className="wrapper-btn">
-        <button className="btn-clear" onClick={handleClear}>
-          Clear
-        </button>
-
-        <button className="btn-save" onClick={handleSave}>
-          Save
-        </button>
+        <Button label={"Clear"} handle={handleClear} style={"btn-clear"} />
+        <Button label={"Save"} handle={handleSave} style={"btn-save"} />
       </div>
     </>
   );

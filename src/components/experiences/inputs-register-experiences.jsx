@@ -1,4 +1,5 @@
 import { Input } from "../input";
+import { Button } from "../shared/button";
 
 export const InputsRegisterExperiences = ({
   tempData,
@@ -62,17 +63,14 @@ export const InputsRegisterExperiences = ({
       />
 
       <div className="wrapper-btn">
-        <button className="btn-save" onClick={handleSaveData}>
-          Save
-        </button>
+        <Button label={"Save"} handle={handleSaveData} style={"btn-save"} />
 
         {shouldAddNewExperience && (
-          <button
-            className="btn-delete"
-            onClick={() => setShouldAddNewExperience(false)}
-          >
-            Cancel
-          </button>
+          <Button
+            label={"Cancel"}
+            handle={() => setShouldAddNewExperience(false)}
+            style={"btn-delete"}
+          />
         )}
       </div>
     </>

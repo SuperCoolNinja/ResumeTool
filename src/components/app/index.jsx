@@ -1,8 +1,8 @@
-import { Card } from "../card";
 import { PersonalDetailsCard } from "../personal-details-card";
 import { Educations } from "../educations";
 import { DataProvider } from "../../contexts/dataContext"; // Adjust the import path accordingly
 import { Experiences } from "../experiences";
+import { Card } from "../shared/card";
 
 export const App = () => {
   return (

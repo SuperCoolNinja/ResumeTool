@@ -1,4 +1,5 @@
 import { Input } from "../input";
+import { Button } from "../shared/button";
 
 export const InputsRegisterEducation = ({
   tempData,
@@ -53,17 +54,14 @@ export const InputsRegisterEducation = ({
       />
 
       <div className="wrapper-btn">
-        <button className="btn-save" onClick={handleSaveData}>
-          Save
-        </button>
+        <Button label={"Save"} handle={handleSaveData} style={"btn-save"} />
 
         {shouldAddNewEducation && (
-          <button
-            className="btn-delete"
-            onClick={() => setShouldAddNewEducation(false)}
-          >
-            Cancel
-          </button>
+          <Button
+            label={"Cancel"}
+            handle={() => setShouldAddNewEducation(false)}
+            style={"btn-delete"}
+          />
         )}
       </div>
     </>
