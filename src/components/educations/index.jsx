@@ -7,10 +7,8 @@ import { LoadEducations } from "./load-educations";
 export const Educations = () => {
   const { data, setData } = useContext(DataContext);
   const [shouldAddNewEducation, setShouldAddNewEducation] = useState(false);
-
-  const canOpenTheInputsRegisterEducation =
-    data.educations.length <= 0 || shouldAddNewEducation == true;
-
+  const [isEditing, setIsEditing] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(null);
   const [tempData, setTempData] = useState({
     school: "",
     degree: "",
@@ -18,55 +16,69 @@ export const Educations = () => {
     endDate: "",
     location: "",
   });
-
   const [errors, setErrors] = useState({});
 
   const handleChange = (e, field) => {
     const { value } = e.target;
-
     setTempData((prevData) => ({
       ...prevData,
       [field]: value,
     }));
-
     setErrors((prevErrors) => ({
       ...prevErrors,
       [field]: "",
     }));
   };
 
-  const handleAddNewEducation = (bool) => setShouldAddNewEducation(bool);
+  const handleAddNewEducation = (bool) => {
+    setShouldAddNewEducation(bool);
+    setIsEditing(false);
+    setTempData({
+      school: "",
+      degree: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+    });
+  };
+
+  const handleEdit = (education, index) => {
+    setTempData(education);
+    setCurrentIndex(index);
+    setShouldAddNewEducation(true);
+    setIsEditing(true);
+  };
 
   const handleSaveData = (e) => {
     e.preventDefault();
-
     const newErrors = {};
-
-    if (tempData.school.trim() === "") {
+    if (tempData.school.trim() === "")
       newErrors.school = "School cannot be empty";
-    }
-    if (tempData.degree.trim() === "") {
+    if (tempData.degree.trim() === "")
       newErrors.degree = "Degree cannot be empty";
-    }
-    if (tempData.startDate.trim() === "") {
+    if (tempData.startDate.trim() === "")
       newErrors.startDate = "Start date cannot be empty";
-    }
-    if (tempData.endDate.trim() === "") {
+    if (tempData.endDate.trim() === "")
       newErrors.endDate = "End date cannot be empty";
-    }
-    if (tempData.location.trim() === "") {
+    if (tempData.location.trim() === "")
       newErrors.location = "Location cannot be empty";
-    }
-
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
     }
 
-    setData((prevData) => ({
-      ...prevData,
-      educations: [...prevData.educations, { ...tempData, id: uuidv4() }],
-    }));
+    if (isEditing) {
+      setData((prevData) => {
+        const newEducations = [...prevData.educations];
+        newEducations[currentIndex] = tempData;
+        return { ...prevData, educations: newEducations };
+      });
+    } else {
+      setData((prevData) => ({
+        ...prevData,
+        educations: [...prevData.educations, { ...tempData, id: uuidv4() }],
+      }));
+    }
 
     setTempData({
       school: "",
@@ -75,23 +87,13 @@ export const Educations = () => {
       endDate: "",
       location: "",
     });
-
     setShouldAddNewEducation(false);
-  };
-
-  const handleEditChange = (e, index, field) => {
-    const { value } = e.target;
-
-    setData((prevData) => {
-      const newEducations = [...prevData.educations];
-      newEducations[index] = { ...newEducations[index], [field]: value };
-      return { ...prevData, educations: newEducations };
-    });
+    setIsEditing(false);
+    setCurrentIndex(null);
   };
 
   const handleDelete = (e, index) => {
     const filterDataToKeep = data.educations.filter((_, i) => i !== index);
-
     setData((prevData) => ({
       ...prevData,
       educations: filterDataToKeep,
@@ -100,7 +102,7 @@ export const Educations = () => {
 
   return (
     <>
-      {canOpenTheInputsRegisterEducation ? (
+      {shouldAddNewEducation ? (
         <InputsRegisterEducation
           tempData={tempData}
           handleChange={handleChange}
@@ -113,7 +115,7 @@ export const Educations = () => {
       ) : (
         <LoadEducations
           educations={data.educations}
-          handleEditChange={handleEditChange}
+          handleEdit={handleEdit}
           handleDelete={handleDelete}
           setAddNewEducation={handleAddNewEducation}
         />
