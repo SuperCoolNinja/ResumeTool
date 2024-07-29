@@ -3,20 +3,16 @@ import { DataContext } from "../../contexts/dataContext";
 import { v4 as uuidv4 } from "uuid";
 import { InputsRegisterEducation } from "./inputs-register-education";
 import { LoadEducations } from "./load-educations";
+import { initialErrors, initialTempData } from "./data";
+import { validateInputs } from "../../services/validateInputs";
 
 export const Educations = () => {
   const { data, setData } = useContext(DataContext);
   const [shouldAddNewEducation, setShouldAddNewEducation] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(null);
-  const [tempData, setTempData] = useState({
-    school: "",
-    degree: "",
-    startDate: "",
-    endDate: "",
-    location: "",
-  });
-  const [errors, setErrors] = useState({});
+  const [tempData, setTempData] = useState(initialTempData);
+  const [errors, setErrors] = useState(initialErrors);
 
   const handleChange = (e, field) => {
     const { value } = e.target;
@@ -30,16 +26,29 @@ export const Educations = () => {
     }));
   };
 
+  const handleDelete = (e, index) => {
+    const filterDataToKeep = data.educations.filter((_, i) => i !== index);
+    setData((prevData) => ({
+      ...prevData,
+      educations: filterDataToKeep,
+    }));
+  };
+
+  const resetTempData = () => {
+    setTempData(initialTempData);
+  };
+
+  const resetForm = () => {
+    resetTempData();
+    setShouldAddNewEducation(false);
+    setIsEditing(false);
+    setCurrentIndex(null);
+  };
+
   const handleAddNewEducation = (bool) => {
     setShouldAddNewEducation(bool);
     setIsEditing(false);
-    setTempData({
-      school: "",
-      degree: "",
-      startDate: "",
-      endDate: "",
-      location: "",
-    });
+    resetTempData();
   };
 
   const handleEdit = (education, index) => {
@@ -51,17 +60,7 @@ export const Educations = () => {
 
   const handleSaveData = (e) => {
     e.preventDefault();
-    const newErrors = {};
-    if (tempData.school.trim() === "")
-      newErrors.school = "School cannot be empty";
-    if (tempData.degree.trim() === "")
-      newErrors.degree = "Degree cannot be empty";
-    if (tempData.startDate.trim() === "")
-      newErrors.startDate = "Start date cannot be empty";
-    if (tempData.endDate.trim() === "")
-      newErrors.endDate = "End date cannot be empty";
-    if (tempData.location.trim() === "")
-      newErrors.location = "Location cannot be empty";
+    const newErrors = validateInputs(tempData);
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -69,9 +68,10 @@ export const Educations = () => {
 
     if (isEditing) {
       setData((prevData) => {
-        const newEducations = [...prevData.educations];
-        newEducations[currentIndex] = tempData;
-        return { ...prevData, educations: newEducations };
+        const updatedEducations = prevData.educations.map((education, index) =>
+          index === currentIndex ? tempData : education
+        );
+        return { ...prevData, educations: updatedEducations };
       });
     } else {
       setData((prevData) => ({
@@ -80,24 +80,7 @@ export const Educations = () => {
       }));
     }
 
-    setTempData({
-      school: "",
-      degree: "",
-      startDate: "",
-      endDate: "",
-      location: "",
-    });
-    setShouldAddNewEducation(false);
-    setIsEditing(false);
-    setCurrentIndex(null);
-  };
-
-  const handleDelete = (e, index) => {
-    const filterDataToKeep = data.educations.filter((_, i) => i !== index);
-    setData((prevData) => ({
-      ...prevData,
-      educations: filterDataToKeep,
-    }));
+    resetForm();
   };
 
   return (
