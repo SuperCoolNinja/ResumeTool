@@ -1,4 +1,5 @@
 import { Button } from "../shared/button";
+import { Actions } from "./actions";
 
 export const LoadEducations = ({
   educations,
@@ -9,21 +10,13 @@ export const LoadEducations = ({
   return (
     <ul className="container-educations-loaded">
       {educations.map((education, index) => (
-        <li className="wrapper-option" key={education.id}>
-          <h3 className="title-education-loaded">{education.school}</h3>
-          <div className="gap-1rem">
-            <Button
-              style={"option-edit"}
-              handle={() => handleEdit(education, index)}
-              label={"Edit"}
-            />
-            <Button
-              style={"option-delete"}
-              handle={(e) => handleDelete(e, index)}
-              label={"Delete"}
-            />
-          </div>
-        </li>
+        <Actions
+          key={education.id}
+          education={education}
+          index={index}
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+        />
       ))}
 
       <Button
