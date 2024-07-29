@@ -7,17 +7,30 @@ import { Card } from "../shared/card";
 export const App = () => {
   return (
     <DataProvider>
-      <div className="container cards-space">
-        <Card title="Personal Details">
-          <PersonalDetailsCard />
-        </Card>
-        <Card title="Educations">
-          <Educations />
-        </Card>
+      <div className="container app_wrapper">
+        {/* Left side, cards options */}
+        <div className="cards-wrapper">
+          <Card title="Personal Details">
+            <PersonalDetailsCard />
+          </Card>
+          <Card title="Educations">
+            <Educations />
+          </Card>
 
-        <Card title="Experiences">
-          <Experiences />
-        </Card>
+          <Card title="Experiences">
+            <Experiences />
+          </Card>
+        </div>
+
+        {/* Right side, cv */}
+        <div className="cv_container">
+          <section>
+            <h3>John Doe</h3>
+            <p>johndoe@gmail.com</p>
+            <p>location</p>
+            <p>255 555 201</p>
+          </section>
+        </div>
       </div>
     </DataProvider>
   );
