@@ -13,7 +13,7 @@ export const InputsRegisterExperiences = ({
   return (
     <>
       <Input
-        labelName="companyName"
+        labelName="Company Name"
         id={`companyName-${uuid()}`}
         type="text"
         value={tempData.companyName}
@@ -21,7 +21,7 @@ export const InputsRegisterExperiences = ({
         error={errors.companyName}
       />
       <Input
-        labelName="positionTitle"
+        labelName="Position Title"
         id={`positionTitle-${uuid()}`}
         type="text"
         value={tempData.positionTitle}
