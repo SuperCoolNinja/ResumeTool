@@ -1,5 +1,5 @@
 import { Input } from "../input";
-import { Button } from "../shared/button";
+import { CreateFirstActions } from "./create-first-actions";
 
 export const InputsRegisterEducation = ({
   tempData,
@@ -53,17 +53,11 @@ export const InputsRegisterEducation = ({
         error={errors.location}
       />
 
-      <div className="wrapper-btn">
-        <Button label={"Save"} handle={handleSaveData} style={"btn-save"} />
-
-        {shouldAddNewEducation && (
-          <Button
-            label={"Cancel"}
-            handle={() => setShouldAddNewEducation(false)}
-            style={"btn-delete"}
-          />
-        )}
-      </div>
+      <CreateFirstActions
+        shouldAddNewEducation={shouldAddNewEducation}
+        setShouldAddNewEducation={setShouldAddNewEducation}
+        handle={handleSaveData}
+      />
     </>
   );
 };

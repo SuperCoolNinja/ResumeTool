@@ -1,3 +1,5 @@
+import { Button } from "../shared/button";
+
 export const LoadEducations = ({
   educations,
   handleEdit,
@@ -7,29 +9,28 @@ export const LoadEducations = ({
   return (
     <ul className="container-educations-loaded">
       {educations.map((education, index) => (
-        <li key={education.id}>
-          <div className="wrapper-option">
-            <h3 className="title-education-loaded">{education.school}</h3>
-            <div className="gap-1rem">
-              <button
-                className="option-edit"
-                onClick={() => handleEdit(education, index)}
-              >
-                Edit
-              </button>
-              <button
-                onClick={(e) => handleDelete(e, index)}
-                className="option-delete"
-              >
-                Delete
-              </button>
-            </div>
+        <li className="wrapper-option" key={education.id}>
+          <h3 className="title-education-loaded">{education.school}</h3>
+          <div className="gap-1rem">
+            <Button
+              style={"option-edit"}
+              handle={() => handleEdit(education, index)}
+              label={"Edit"}
+            />
+            <Button
+              style={"option-delete"}
+              handle={(e) => handleDelete(e, index)}
+              label={"Delete"}
+            />
           </div>
         </li>
       ))}
-      <button className="btn-save" onClick={() => setAddNewEducation(true)}>
-        ADD
-      </button>
+
+      <Button
+        style={"btn-save"}
+        handle={() => setAddNewEducation(true)}
+        label={"ADD"}
+      />
     </ul>
   );
 };
