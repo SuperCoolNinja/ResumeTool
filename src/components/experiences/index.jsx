@@ -3,23 +3,16 @@ import { DataContext } from "../../contexts/dataContext";
 import { v4 as uuidv4 } from "uuid";
 import { InputsRegisterExperiences } from "./inputs-register-experiences";
 import { LoadExperiences } from "./load-experiences";
+import { initialTempData } from "./data";
+import { dataCannotBeEmpty } from "../../services/validateInputs";
 
 export const Experiences = () => {
   const { data, setData } = useContext(DataContext);
-
   const [shouldAddNewExperience, setShouldAddNewExperience] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(null);
-
-  const [tempData, setTempData] = useState({
-    companyName: "",
-    positionTitle: "",
-    startDate: "",
-    endDate: "",
-    location: "",
-    description: "",
-  });
   const [errors, setErrors] = useState({});
+  const [tempData, setTempData] = useState(initialTempData);
 
   const handleChange = (e, field) => {
     const { value } = e.target;
@@ -36,14 +29,7 @@ export const Experiences = () => {
   const handleAddNewExperience = (bool) => {
     setShouldAddNewExperience(bool);
     setIsEditing(false);
-    setTempData({
-      companyName: "",
-      positionTitle: "",
-      startDate: "",
-      endDate: "",
-      location: "",
-      description: "",
-    });
+    setTempData(initialTempData);
   };
 
   const handleEdit = (experience, index) => {
@@ -55,19 +41,8 @@ export const Experiences = () => {
 
   const handleSaveData = (e) => {
     e.preventDefault();
-    const newErrors = {};
-    if (tempData.companyName.trim() === "")
-      newErrors.companyName = "Company cannot be empty";
-    if (tempData.positionTitle.trim() === "")
-      newErrors.positionTitle = "Position cannot be empty";
-    if (tempData.startDate.trim() === "")
-      newErrors.startDate = "Start date cannot be empty";
-    if (tempData.endDate.trim() === "")
-      newErrors.endDate = "End date cannot be empty";
-    if (tempData.location.trim() === "")
-      newErrors.location = "Location cannot be empty";
-    if (tempData.description.trim() === "")
-      newErrors.description = "Description cannot be empty";
+
+    const newErrors = dataCannotBeEmpty(tempData);
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
@@ -86,14 +61,7 @@ export const Experiences = () => {
       }));
     }
 
-    setTempData({
-      companyName: "",
-      positionTitle: "",
-      startDate: "",
-      endDate: "",
-      location: "",
-      description: "",
-    });
+    setTempData(initialTempData);
     setShouldAddNewExperience(false);
     setIsEditing(false);
     setCurrentIndex(null);

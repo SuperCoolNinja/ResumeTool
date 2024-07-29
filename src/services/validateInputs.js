@@ -1,4 +1,4 @@
-export const validateInputs = (tempData) => {
+export const dataCannotBeEmpty = (tempData) => {
   const newErrors = {};
   for (const [field, value] of Object.entries(tempData)) {
     if (value.trim() === "") {

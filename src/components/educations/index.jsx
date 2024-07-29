@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import { InputsRegisterEducation } from "./inputs-register-education";
 import { LoadEducations } from "./load-educations";
 import { initialErrors, initialTempData } from "./data";
-import { validateInputs } from "../../services/validateInputs";
+import { dataCannotBeEmpty } from "../../services/validateInputs";
 
 export const Educations = () => {
   const { data, setData } = useContext(DataContext);
@@ -60,7 +60,7 @@ export const Educations = () => {
 
   const handleSaveData = (e) => {
     e.preventDefault();
-    const newErrors = validateInputs(tempData);
+    const newErrors = dataCannotBeEmpty(tempData);
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
       return;
