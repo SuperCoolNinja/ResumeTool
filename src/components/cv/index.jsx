@@ -4,6 +4,7 @@ import { PhoneIcon } from "../shared/icons/phone";
 import { LocationIcon } from "../shared/icons/position";
 import "./style.css";
 import { DataContext } from "../../contexts/dataContext";
+import { ItemPersonnalInfo } from "./item-personnal-info";
 
 export const Cv = () => {
   const { data } = useContext(DataContext);
@@ -18,20 +19,9 @@ export const Cv = () => {
           <h1>{fullname}</h1>
         </div>
         <div className="wrapper-subPersonnalInfo">
-          <div className="wrapper-itemsIconPersonnal">
-            <MailIcon />
-            <p>{email}</p>
-          </div>
-
-          <div className="wrapper-itemsIconPersonnal">
-            <LocationIcon />
-            <p>{address}</p>
-          </div>
-
-          <div className="wrapper-itemsIconPersonnal">
-            <PhoneIcon />
-            <p>{phone}</p>
-          </div>
+          <ItemPersonnalInfo label={email} IconComponent={MailIcon} />
+          <ItemPersonnalInfo label={address} IconComponent={LocationIcon} />
+          <ItemPersonnalInfo label={phone} IconComponent={PhoneIcon} />
         </div>
       </section>
     </>
