@@ -1,0 +1,24 @@
+.wrapper-personnalInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: #3f65e0cb;
+  color: white;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: none;
+  border-bottom-left-radius: none;
+}
+
+.wrapper-subPersonnalInfo {
+  display: flex;
+  gap: 2rem;
+}
+
+.wrapper-itemsIconPersonnal {
+  display: flex;
+  gap: 0.8rem;
+}

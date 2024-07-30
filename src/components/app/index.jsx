@@ -3,6 +3,7 @@ import { Educations } from "../educations";
 import { DataProvider } from "../../contexts/dataContext"; // Adjust the import path accordingly
 import { Experiences } from "../experiences";
 import { Card } from "../shared/card";
+import { Cv } from "../cv";
 
 export const App = () => {
   return (
@@ -24,12 +25,7 @@ export const App = () => {
 
         {/* Right side, cv */}
         <div className="cv_container">
-          <section>
-            <h3>John Doe</h3>
-            <p>johndoe@gmail.com</p>
-            <p>location</p>
-            <p>255 555 201</p>
-          </section>
+          <Cv />
         </div>
       </div>
     </DataProvider>

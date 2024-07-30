@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { DropDownLess } from "../dropdown-icons/less";
-import { DropDownMore } from "../dropdown-icons/more";
+import { DropDownLess } from "../icons/dropdown-icons/less";
+import { DropDownMore } from "../icons/dropdown-icons/more";
 
 export const Card = ({ title, children }) => {
   const [isViewMore, setViewMore] = useState(true);
