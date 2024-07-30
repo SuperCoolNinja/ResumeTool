@@ -1,4 +1,4 @@
-import { Input } from "../input";
+import { Input } from "../shared/input";
 import { Button } from "../shared/button";
 
 export const InputsRegisterExperiences = ({

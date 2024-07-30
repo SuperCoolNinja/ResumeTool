@@ -1,4 +1,4 @@
-import { Input } from "../input";
+import { Input } from "../shared/input";
 import { CreateFirstActions } from "./create-first-actions";
 
 export const InputsRegisterEducation = ({

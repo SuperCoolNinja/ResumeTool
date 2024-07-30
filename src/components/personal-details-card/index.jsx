@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { DataContext } from "../../contexts/dataContext";
-import { Input } from "../input";
+import { Input } from "../shared/input";
 import { Button } from "../shared/button";
 
 export const PersonalDetailsCard = () => {
