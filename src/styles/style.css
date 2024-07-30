@@ -49,6 +49,22 @@ body {
   gap: 1rem;
 }
 
+.input {
+  background-color: #f3f4f6;
+  border-radius: 0.5rem;
+  width: 100%;
+  border: none;
+  padding: 0.8rem;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.error-message {
+  color: rgba(255, 0, 0, 0.945);
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
 /* ------------ */
 /* --BUTTON--*/
 /* ------------ */
@@ -206,6 +222,45 @@ body {
 h3[class="title-education-loaded"] {
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+/* ------------ */
+/* -- CV --*/
+/* ------------ */
+.wrapper-personnalInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: #3f65e0cb;
+  color: white;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: none;
+  border-bottom-left-radius: none;
+}
+
+.wrapper-subPersonnalInfo {
+  display: flex;
+  gap: 2rem;
+}
+
+.wrapper-itemsIconPersonnal {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.wrapper-sectionCV {
+  padding: 2rem;
+}
+
+.title-sectionCV {
+  text-align: center;
+  background: #e7e4e46c;
+  padding: 1rem;
+  border-radius: 1rem;
 }
 
 /* ------------ */

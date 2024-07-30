@@ -1,5 +1,3 @@
-import "./style.css";
-
 export const Input = ({ id, type, labelName, value, onChange, error }) => {
   return (
     <form

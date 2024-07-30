@@ -14,6 +14,7 @@ export const App = () => {
           <Card title="Personal Details">
             <PersonalDetailsCard />
           </Card>
+
           <Card title="Educations">
             <Educations />
           </Card>

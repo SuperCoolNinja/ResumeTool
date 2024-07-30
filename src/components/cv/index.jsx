@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { MailIcon } from "../shared/icons/mail";
 import { PhoneIcon } from "../shared/icons/phone";
 import { LocationIcon } from "../shared/icons/position";
-import "./style.css";
 import { DataContext } from "../../contexts/dataContext";
 import { ItemPersonnalInfo } from "./item-personnal-info";
+import { Section } from "../shared/section";
 
 export const Cv = () => {
   const { data } = useContext(DataContext);
@@ -14,7 +14,8 @@ export const Cv = () => {
 
   return (
     <>
-      <section className="wrapper-personnalInfo">
+      {/* Top */}
+      <div className="wrapper-personnalInfo">
         <div>
           <h1>{fullname}</h1>
         </div>
@@ -23,7 +24,13 @@ export const Cv = () => {
           <ItemPersonnalInfo label={address} IconComponent={LocationIcon} />
           <ItemPersonnalInfo label={phone} IconComponent={PhoneIcon} />
         </div>
-      </section>
+      </div>
+
+      {/* Educations */}
+      <Section label={"Educations"}></Section>
+
+      {/* Experiences */}
+      <Section label={"Experiences"}></Section>
     </>
   );
 };
