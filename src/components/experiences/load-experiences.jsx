@@ -8,10 +8,12 @@ export const LoadExperiences = ({
 }) => {
   return (
     <ul className="container-educations-loaded">
-      {experiences.map((experience, index) => (
-        <li key={experience.id}>
+      {experiences?.map((experience, index) => (
+        <li key={index}>
           <div className="wrapper-option">
-            <h3 className="title-education-loaded">{experience.companyName}</h3>
+            <h3 className="title-education-loaded">
+              {experience?.companyName}
+            </h3>
             <div className="gap-1rem">
               <Button
                 label={"Edit"}

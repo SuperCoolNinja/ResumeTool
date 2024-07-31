@@ -15,12 +15,12 @@ export const App = () => {
             <PersonalDetailsCard />
           </Card>
 
-          <Card title="Educations">
-            <Educations />
+          <Card title="Employment History">
+            <Experiences />
           </Card>
 
-          <Card title="Experiences">
-            <Experiences />
+          <Card title="Educations">
+            <Educations />
           </Card>
         </div>
 

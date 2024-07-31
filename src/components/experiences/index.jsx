@@ -50,9 +50,9 @@ export const Experiences = () => {
 
     if (isEditing) {
       setData((prevData) => {
-        const newExperience = [...prevData.educations];
-        newExperience[currentIndex] = tempData;
-        return { ...prevData, experiences: newExperience };
+        const newExperiences = [...prevData.experiences];
+        newExperiences[currentIndex] = tempData;
+        return { ...prevData, experiences: newExperiences };
       });
     } else {
       setData((prevData) => ({
@@ -83,8 +83,8 @@ export const Experiences = () => {
           handleChange={handleChange}
           handleSaveData={handleSaveData}
           uuid={uuidv4}
-          shouldAddNewEducation={shouldAddNewExperience}
-          setShouldAddNewEducation={handleAddNewExperience}
+          shouldAddNewExperience={shouldAddNewExperience}
+          setShouldAddNewExperience={handleAddNewExperience}
           errors={errors}
         />
       ) : (

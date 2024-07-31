@@ -5,12 +5,12 @@ import { LocationIcon } from "../shared/icons/position";
 import { DataContext } from "../../contexts/dataContext";
 import { ItemPersonnalInfo } from "./item-personnal-info";
 import { Section } from "../shared/section";
+import { convertToMonthYear } from "../../services/convertToMonthYear";
+import { isTheSamePeriod } from "../../services/isTheSamePeriod";
 
 export const Resume = () => {
   const { data } = useContext(DataContext);
-  const {
-    personalDetails: { fullname, email, address, phone },
-  } = data;
+  const { fullname, email, address, phone } = data.personalDetails;
 
   return (
     <>
@@ -26,13 +26,36 @@ export const Resume = () => {
         </div>
       </div>
 
+      <Section label="Employment History">
+        <ul>
+          {data.experiences.map((experience, index) => {
+            const startDate = convertToMonthYear(experience.startDate);
+            const endDate = convertToMonthYear(experience.endDate);
+            return (
+              <li className="wrapper-employment-items" key={index}>
+                <div className="wrapper-employment-item">
+                  <p>{isTheSamePeriod(startDate, endDate)}</p>
+                  <p>{experience.location}</p>
+                </div>
+                <div className="wrapper-employment-item employment-sub-item">
+                  <h3>{experience.companyName}</h3>
+                  <h4 className="employment-positionTitle">
+                    {experience.positionTitle}
+                  </h4>
+                  <p className="employment-description">
+                    {experience.description}
+                  </p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </Section>
+
       {/* Educations */}
       <Section label={"Educations"}>
         <div></div>
       </Section>
-
-      {/* Experiences */}
-      <Section label={"Experiences"}></Section>
     </>
   );
 };

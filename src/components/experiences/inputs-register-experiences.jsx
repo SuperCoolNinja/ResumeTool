@@ -29,6 +29,24 @@ export const InputsRegisterExperiences = ({
         error={errors.positionTitle}
       />
       <Input
+        labelName="Description"
+        id={`Description-${uuid()}`}
+        type="text"
+        value={tempData.description}
+        onChange={(e) => handleChange(e, "description")}
+        error={errors.description}
+      />
+
+      <Input
+        labelName="Location"
+        id={`location-${uuid()}`}
+        type="text"
+        value={tempData.location}
+        onChange={(e) => handleChange(e, "location")}
+        error={errors.location}
+      />
+
+      <Input
         labelName="Start Date"
         id={`startDate-${uuid()}`}
         type="date"
@@ -43,23 +61,6 @@ export const InputsRegisterExperiences = ({
         value={tempData.endDate}
         onChange={(e) => handleChange(e, "endDate")}
         error={errors.endDate}
-      />
-      <Input
-        labelName="Location"
-        id={`location-${uuid()}`}
-        type="text"
-        value={tempData.location}
-        onChange={(e) => handleChange(e, "location")}
-        error={errors.location}
-      />
-
-      <Input
-        labelName="Description"
-        id={`Description-${uuid()}`}
-        type="text"
-        value={tempData.description}
-        onChange={(e) => handleChange(e, "description")}
-        error={errors.description}
       />
 
       <div className="wrapper-btn">
