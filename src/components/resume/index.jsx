@@ -42,7 +42,7 @@ export const Resume = () => {
                 <Details
                   description={experience.description}
                   positionTitle={experience.positionTitle}
-                  postTitle={experience.positionTitle}
+                  postTitle={experience.companyName}
                 />
               </li>
             );

@@ -285,7 +285,7 @@ h3[class="title-education-loaded"] {
 
 .wrapper-resume-sub-item {
   display: flex;
-  width: 55rem;
+  width: 50rem;
 }
 .positionTitle {
   font-weight: 500;
@@ -293,7 +293,7 @@ h3[class="title-education-loaded"] {
 }
 
 .description {
-  width: 48rem;
+  width: 50rem;
 }
 
 /* ------------ */
