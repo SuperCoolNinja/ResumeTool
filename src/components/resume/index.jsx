@@ -33,7 +33,7 @@ export const Resume = () => {
             const startDate = convertToMonthYear(experience.startDate);
             const endDate = convertToMonthYear(experience.endDate);
             return (
-              <li className="wrapper-employment-items" key={index}>
+              <li className="wrapper-items" key={index}>
                 <Summary
                   startDate={startDate}
                   endDate={endDate}
@@ -52,7 +52,25 @@ export const Resume = () => {
 
       {/* Educations */}
       <Section label={"Educations"}>
-        <div></div>
+        <ul>
+          {data.educations.map((experience, index) => {
+            const startDate = convertToMonthYear(experience.startDate);
+            const endDate = convertToMonthYear(experience.endDate);
+            return (
+              <li className="wrapper-items" key={index}>
+                <Summary
+                  startDate={startDate}
+                  endDate={endDate}
+                  location={experience.location}
+                />
+                <Details
+                  description={experience.degree}
+                  postTitle={experience.school}
+                />
+              </li>
+            );
+          })}
+        </ul>
       </Section>
     </>
   );

@@ -28,6 +28,16 @@ export const InputsRegisterEducation = ({
         onChange={(e) => handleChange(e, "degree")}
         error={errors.degree}
       />
+
+      <Input
+        labelName="Location"
+        id={`location-${uuid()}`}
+        type="text"
+        value={tempData.location}
+        onChange={(e) => handleChange(e, "location")}
+        error={errors.location}
+      />
+
       <Input
         labelName="Start Date"
         id={`startDate-${uuid()}`}
@@ -43,14 +53,6 @@ export const InputsRegisterEducation = ({
         value={tempData.endDate}
         onChange={(e) => handleChange(e, "endDate")}
         error={errors.endDate}
-      />
-      <Input
-        labelName="Location"
-        id={`location-${uuid()}`}
-        type="text"
-        value={tempData.location}
-        onChange={(e) => handleChange(e, "location")}
-        error={errors.location}
       />
 
       <CreateFirstActions

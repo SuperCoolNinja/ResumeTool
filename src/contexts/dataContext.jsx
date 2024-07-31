@@ -9,7 +9,7 @@ export const DataProvider = ({ children }) => {
       fullname: "John Doe",
       email: "johndoe@gmail.com",
       address: "30461 Lue Cliffs Suite 385",
-      phone: "1-603-507-1027",
+      phone: "+1 (555) 123-4567",
     },
     educations: [],
     experiences: [],

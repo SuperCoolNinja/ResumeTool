@@ -270,7 +270,7 @@ h3[class="title-education-loaded"] {
 /* ------------ */
 /* --EMPLOYMENT FROM RESUME --*/
 /* ------------ */
-.wrapper-employment-items {
+.wrapper-items {
   display: flex;
   justify-content: space-between;
   padding: 2rem;
