@@ -14,5 +14,5 @@ This is part of an assignment from The Odin Project, which you can find here: [T
 Run `npm i` to install all the dependencies and `npm run dev` to start the project in development mode.
 
 ## Preview :
-![image](https://github.com/user-attachments/assets/316ad04b-b127-4832-bb5d-2e9393000ea3)
+![image](https://github.com/user-attachments/assets/b4a8449a-817f-40a9-867e-99788636f551)
 
