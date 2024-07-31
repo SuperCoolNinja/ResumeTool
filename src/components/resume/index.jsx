@@ -3,10 +3,11 @@ import { MailIcon } from "../shared/icons/mail";
 import { PhoneIcon } from "../shared/icons/phone";
 import { LocationIcon } from "../shared/icons/position";
 import { DataContext } from "../../contexts/dataContext";
-import { ItemPersonnalInfo } from "./item-personnal-info";
+import { ItemPersonalInfo } from "./item-personal-info";
 import { Section } from "../shared/section";
 import { convertToMonthYear } from "../../services/convertToMonthYear";
-import { isTheSamePeriod } from "../../services/isTheSamePeriod";
+import { Summary } from "./summary";
+import { Details } from "./details";
 
 export const Resume = () => {
   const { data } = useContext(DataContext);
@@ -20,9 +21,9 @@ export const Resume = () => {
           <h1>{fullname}</h1>
         </div>
         <div className="wrapper-subPersonnalInfo">
-          <ItemPersonnalInfo label={email} IconComponent={MailIcon} />
-          <ItemPersonnalInfo label={address} IconComponent={LocationIcon} />
-          <ItemPersonnalInfo label={phone} IconComponent={PhoneIcon} />
+          <ItemPersonalInfo label={email} IconComponent={MailIcon} />
+          <ItemPersonalInfo label={address} IconComponent={LocationIcon} />
+          <ItemPersonalInfo label={phone} IconComponent={PhoneIcon} />
         </div>
       </div>
 
@@ -33,19 +34,16 @@ export const Resume = () => {
             const endDate = convertToMonthYear(experience.endDate);
             return (
               <li className="wrapper-employment-items" key={index}>
-                <div className="wrapper-employment-item">
-                  <p>{isTheSamePeriod(startDate, endDate)}</p>
-                  <p>{experience.location}</p>
-                </div>
-                <div className="wrapper-employment-item employment-sub-item">
-                  <h3>{experience.companyName}</h3>
-                  <h4 className="employment-positionTitle">
-                    {experience.positionTitle}
-                  </h4>
-                  <p className="employment-description">
-                    {experience.description}
-                  </p>
-                </div>
+                <Summary
+                  startDate={startDate}
+                  endDate={endDate}
+                  location={experience.location}
+                />
+                <Details
+                  description={experience.description}
+                  positionTitle={experience.positionTitle}
+                  postTitle={experience.positionTitle}
+                />
               </li>
             );
           })}

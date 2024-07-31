@@ -268,7 +268,7 @@ h3[class="title-education-loaded"] {
 }
 
 /* ------------ */
-/* --EMPLOYEMENT FROM RESUME --*/
+/* --EMPLOYMENT FROM RESUME --*/
 /* ------------ */
 .wrapper-employment-items {
   display: flex;
@@ -277,23 +277,22 @@ h3[class="title-education-loaded"] {
   width: 100%;
 }
 
-.wrapper-employment-item {
+.wrapper-resume-item {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.employment-sub-item {
+.wrapper-resume-sub-item {
   display: flex;
   width: 55rem;
 }
-
-.employment-positionTitle {
+.positionTitle {
   font-weight: 500;
   color: rgba(0, 0, 0, 0.671);
 }
 
-.employment-description {
+.description {
   width: 48rem;
 }
 

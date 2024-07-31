@@ -1,4 +1,4 @@
-export const ItemPersonnalInfo = ({ label, IconComponent }) => {
+export const ItemPersonalInfo = ({ label, IconComponent }) => {
   return (
     <div className="wrapper-itemsIconPersonnal">
       <IconComponent />
