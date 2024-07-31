@@ -275,6 +275,7 @@ h3[class="title-education-loaded"] {
   justify-content: space-between;
   padding: 2rem;
   width: 100%;
+  gap: 2rem;
 }
 
 .wrapper-resume-item {
@@ -285,15 +286,17 @@ h3[class="title-education-loaded"] {
 
 .wrapper-resume-sub-item {
   display: flex;
+  flex-wrap: wrap;
   width: 50rem;
 }
+
 .positionTitle {
   font-weight: 500;
   color: rgba(0, 0, 0, 0.671);
 }
 
 .description {
-  width: 50rem;
+  width: 100%;
 }
 
 /* ------------ */
@@ -313,5 +316,95 @@ h3[class="title-education-loaded"] {
 @media (min-width: 1200px) {
   .container {
     width: 1400px;
+  }
+}
+
+/* ------------ */
+/* --PRINT STYLES--*/
+/* ------------ */
+@media print {
+  body {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  .wrapper-resume-sub-item {
+    width: 30rem !important;
+  }
+
+  .cv_container {
+    margin: 1rem auto;
+    width: 100%;
+    page-break-inside: avoid;
+  }
+
+  .container_card,
+  .btn-save,
+  .btn-clear,
+  .btn-delete,
+  .option-edit,
+  .option-delete {
+    display: none;
+  }
+
+  .wrapper-personnalInfo {
+    padding: 2rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
+  .wrapper-subPersonnalInfo {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+  }
+
+  .wrapper-itemsIconPersonnal {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  .wrapper-sectionCV {
+    padding: 2rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .title-sectionCV {
+    text-align: center;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .wrapper-items {
+    padding: 2rem;
+    width: 100%;
+  }
+
+  .wrapper-resume-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .wrapper-resume-sub-item {
+    display: flex;
+    width: 100%;
+  }
+
+  .description {
+    width: 100%;
   }
 }
