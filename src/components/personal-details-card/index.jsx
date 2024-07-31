@@ -30,7 +30,6 @@ export const PersonalDetailsCard = () => {
       ...prevData,
       personalDetails: formState,
     }));
-    console.log("Data saved successfully!");
   };
 
   return (

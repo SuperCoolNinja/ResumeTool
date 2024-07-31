@@ -1,6 +1,6 @@
 import { PersonalDetailsCard } from "../personal-details-card";
 import { Educations } from "../educations";
-import { DataProvider } from "../../contexts/dataContext"; // Adjust the import path accordingly
+import { DataProvider } from "../../contexts/dataContext";
 import { Experiences } from "../experiences";
 import { Card } from "../shared/card";
 import { Resume } from "../resume";
