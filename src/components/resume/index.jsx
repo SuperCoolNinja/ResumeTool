@@ -6,7 +6,7 @@ import { DataContext } from "../../contexts/dataContext";
 import { ItemPersonnalInfo } from "./item-personnal-info";
 import { Section } from "../shared/section";
 
-export const Cv = () => {
+export const Resume = () => {
   const { data } = useContext(DataContext);
   const {
     personalDetails: { fullname, email, address, phone },
@@ -27,7 +27,9 @@ export const Cv = () => {
       </div>
 
       {/* Educations */}
-      <Section label={"Educations"}></Section>
+      <Section label={"Educations"}>
+        <div></div>
+      </Section>
 
       {/* Experiences */}
       <Section label={"Experiences"}></Section>

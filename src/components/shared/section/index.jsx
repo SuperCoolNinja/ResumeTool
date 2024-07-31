@@ -1,4 +1,4 @@
-import { TitleSection } from "../../cv/title-sections";
+import { TitleSection } from "../../resume/title-sections";
 
 export const Section = ({ label, children }) => {
   return (
